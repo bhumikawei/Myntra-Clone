@@ -1,4 +1,4 @@
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { bagActions } from "../Store/bagSlice";
 import { FaCartPlus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
@@ -6,9 +6,15 @@ import { MdDelete } from "react-icons/md";
 const HomeItem = ({item}) => {
 
   const dispatch = useDispatch();
+  const bagItems = useSelector(store => store.bag);
+  const elementFound = bagItems.indexOf(item.id) >= 0;
 
   const handleAddToBag = () => {
     dispatch(bagActions.addToBag(item.id));
+  }
+
+  const handleRemove = () => {
+    dispatch(bagActions.removeFromBag(item.id));
   }
 
   return (
@@ -37,9 +43,8 @@ const HomeItem = ({item}) => {
       </div>
 
 
-     <button type="button" className="btn btn-add-bag btn-success" onClick={handleAddToBag}>Add to Bag <FaCartPlus /></button>
-     <button type="button" className="btn btn-add-bag btn-danger">Remove <MdDelete /></button>
-
+    {elementFound ? <button type="button" className="btn btn-add-bag btn-danger" onClick={handleRemove}>Remove <MdDelete /></button>: <button type="button" className="btn btn-add-bag btn-success" onClick={handleAddToBag}>Add to Bag <FaCartPlus /></button>};
+     
      </div>
     </>
   )
