@@ -1,12 +1,8 @@
+import HomeItem from "../components/HomeItem";
 
-import './App.css'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import HomeItem from './components/HomeItem'
+const Home = () => {
 
-function App() {
-
-    const item = {
+  const item = {  
         id: '001',
         image: 'images/1.jpg',
         company: 'Carlton London',
@@ -21,20 +17,18 @@ function App() {
             count: 1400,
         
     }
-    };
+    };  
 
 
   return (
     <>
-     <Header />
-    <main>
+     <main>
         <div className="items-container">
             <HomeItem item={item}/>
         </div>
     </main>
-      <Footer/>
     </>
   )
 }
 
-export default App
+export default Home
