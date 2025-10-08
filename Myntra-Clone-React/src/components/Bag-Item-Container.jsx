@@ -1,4 +1,14 @@
+import { useDispatch } from "react-redux";
+import { TiDelete } from "react-icons/ti";
+import { bagActions } from "../Store/bagSlice";
+
 const BagItemContainer = ({item}) => {
+  const dispatch = useDispatch();
+
+  const handleRemoveItem = () => {
+    dispatch(bagActions.removeFromBag(item.id))
+  }
+
   return (
     <>
 
@@ -37,8 +47,8 @@ const BagItemContainer = ({item}) => {
 
         </div>
 
-        <div className="remove-from-cart" onClick={() => {}}>
-          X
+        <div className="remove-from-cart" onClick={handleRemoveItem}>
+          <TiDelete />
         </div>
       </div>
     </>
