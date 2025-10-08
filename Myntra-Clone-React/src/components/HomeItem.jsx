@@ -1,5 +1,7 @@
 import { useDispatch } from "react-redux"
 import { bagActions } from "../Store/bagSlice";
+import { FaCartPlus } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 const HomeItem = ({item}) => {
 
@@ -34,7 +36,9 @@ const HomeItem = ({item}) => {
           <span className="discount">({item.discount_percentage}% OFF)</span>
       </div>
 
-      <button className="btn-add-bag" onClick={handleAddToBag}>Add to Bag</button>
+
+     <button type="button" className="btn btn-add-bag btn-success" onClick={handleAddToBag}>Add to Bag <FaCartPlus /></button>
+     <button type="button" className="btn btn-add-bag btn-danger">Remove <MdDelete /></button>
 
      </div>
     </>
